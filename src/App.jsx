@@ -4,56 +4,62 @@ class App extends Component {
     super();
     this.state = {
       count: 0,
+      isCounting: false,
     };
-
-    this.increment = this.increment.bind(this);
-    this.dicrement = this.dicrement.bind(this);
-    this.reset = this.reset.bind(this);
   }
 
-  increment() {
-    this.setState({
-      count: this.state.count + 1,
-    });
+  componentDidMount() {
+    const prevCount = localStorage.getItem("timer");
+    if (prevCount) {
+      this.setState({
+        count: +prevCount,
+      });
+    }
   }
-  dicrement() {
-    this.setState({
-      count: this.state.count - 1,
-    });
+  componentDidUpdate() {
+    localStorage.setItem("timer", this.state.count);
   }
-  reset() {
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+  handleStart = () => {
     this.setState({
+      isCounting: true,
+    });
+
+    this.timerId = setInterval(() => {
+      this.setState({
+        count: this.state.count + 1,
+      });
+    }, 1000);
+  };
+
+  handleStop = () => {
+    this.setState({
+      isCounting: false,
+    });
+    clearInterval(this.timerId);
+  };
+  handleReset = () => {
+    this.setState({
+      isCounting: false,
       count: 0,
     });
-  }
+    clearInterval(this.timerId);
+  };
   render() {
     return (
-      <div className="App">
-        <button
-          onClick={this.dicrement}
-          style={{ display: "inline-block", margin: "0 10px" }}
-        >
-          -
-        </button>
-        <p style={{ display: "inline-block", margin: "0 10px" }}>
-          {this.state.count}
-        </p>
-
-        <button
-          onClick={this.increment}
-          style={{ display: "inline-block", margin: "0 10px" }}
-        >
-          +
-        </button>
-        <button
-          onClick={this.reset}
-          style={{ display: "inline-block", margin: "0 10px" }}
-        >
-          reset
-        </button>
+      <div className="app">
+        <h1>React Timer</h1>
+        <h3>{this.state.count}</h3>
+        {!this.state.isCounting ? (
+          <button onClick={this.handleStart}>start</button>
+        ) : (
+          <button onClick={this.handleStop}>stop</button>
+        )}
+        <button onClick={this.handleReset}>reset</button>
       </div>
     );
   }
 }
-
 export default App;
