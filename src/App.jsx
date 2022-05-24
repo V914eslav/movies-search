@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Form from "./components/Form";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./components/Home/Home";
 
 class App extends Component {
   constructor() {
@@ -12,7 +14,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Form />
+        <Header />
+        <Home />
+        <Footer />
       </div>
     );
   }
