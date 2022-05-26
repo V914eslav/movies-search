@@ -4,6 +4,11 @@ export default class Search extends Component {
   state = {
     search: "",
   };
+  handleKey = (e) => {
+    if (e.key === "Enter") {
+      this.props.searchMovies(this.state.search);
+    }
+  };
   render() {
     return (
       <div className="row">
@@ -20,6 +25,7 @@ export default class Search extends Component {
                   search: e.target.value,
                 })
               }
+              onKeyDown={this.handleKey}
             />
           </div>
         </div>

@@ -18,12 +18,19 @@ class Home extends Component {
       })
       .then((data) => this.setState({ movies: data.Search }));
   }
+  searchMovies = (str) => {
+    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=da61bb99&s=${str}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => this.setState({ movies: data.Search }));
+  };
 
   render() {
     const { movies } = this.state;
     return (
       <div className="container content">
-        <Search />
+        <Search searchMovies={this.searchMovies} />
         {movies.length ? (
           <Movies movies={movies} />
         ) : (
