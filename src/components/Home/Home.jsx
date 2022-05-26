@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import Movies from "../Movies/Movies";
+import Preloader from "../Preloader";
+import Search from "../Search";
 
 // import styles from "./Home.module.css";
 
@@ -21,11 +23,12 @@ class Home extends Component {
     const { movies } = this.state;
     return (
       <div className="container content">
+        <Search />
         {movies.length ? (
           <Movies movies={movies} />
         ) : (
           <>
-            <h3>Lading...</h3>
+            <Preloader />
           </>
         )}
       </div>
