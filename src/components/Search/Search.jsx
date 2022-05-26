@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import cn from "classnames";
+import styles from "./Search.module.css";
+
 export default class Search extends Component {
   state = {
     search: "",
@@ -27,6 +30,12 @@ export default class Search extends Component {
               }
               onKeyDown={this.handleKey}
             />
+            <button
+              className={cn("btn", styles.btn)}
+              onClick={() => this.props.searchMovies(this.state.search)}
+            >
+              Search
+            </button>
           </div>
         </div>
       </div>
