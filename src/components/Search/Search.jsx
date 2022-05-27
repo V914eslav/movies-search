@@ -6,11 +6,22 @@ import styles from "./Search.module.css";
 export default class Search extends Component {
   state = {
     search: "",
+    type: "all",
   };
   handleKey = (e) => {
     if (e.key === "Enter") {
-      this.props.searchMovies(this.state.search);
+      this.props.searchMovies(this.state.search, this.state.type);
     }
+  };
+  handleFilter = (e) => {
+    this.setState(
+      () => ({
+        type: e.target.dataset.type,
+      }),
+      () => {
+        this.props.searchMovies(this.state.search, this.state.type);
+      }
+    );
   };
   render() {
     return (
@@ -32,10 +43,47 @@ export default class Search extends Component {
             />
             <button
               className={cn("btn", styles.btn)}
-              onClick={() => this.props.searchMovies(this.state.search)}
+              onClick={() =>
+                this.props.searchMovies(this.state.search, this.state.type)
+              }
             >
               Search
             </button>
+            <div className="radioButtons">
+              <label>
+                <input
+                  className={cn("with-gap", styles.radioBtn)}
+                  name="type"
+                  type="radio"
+                  data-type="all"
+                  onChange={this.handleFilter}
+                  checked={this.state.type === "all"}
+                />
+                <span>All</span>
+              </label>
+              <label>
+                <input
+                  className={cn("with-gap", styles.radioBtn)}
+                  name="type"
+                  type="radio"
+                  data-type="movie"
+                  onChange={this.handleFilter}
+                  checked={this.state.type === "movie"}
+                />
+                <span>Movies</span>
+              </label>
+              <label>
+                <input
+                  className={cn("with-gap", styles.radioBtn)}
+                  name="type"
+                  type="radio"
+                  data-type="series"
+                  onChange={this.handleFilter}
+                  checked={this.state.type === "series"}
+                />
+                <span>Series</span>
+              </label>
+            </div>
           </div>
         </div>
       </div>
