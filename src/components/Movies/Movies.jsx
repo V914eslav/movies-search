@@ -4,13 +4,15 @@ import Movie from "./Movie/Movie";
 import styles from "./Movies.module.css";
 export default class Movies extends Component {
   render() {
-    const { movies } = this.props;
+    const { movies = [] } = this.props;
     console.log(this.props);
     return (
       <div className={styles.movies}>
-        {movies.map((movie) => (
-          <Movie key={movie.imdbID} {...movie} />
-        ))}
+        {movies.length ? (
+          movies.map((movie) => <Movie key={movie.imdbID} {...movie} />)
+        ) : (
+          <h4>Not found</h4>
+        )}
       </div>
     );
   }
