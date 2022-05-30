@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/V914eslav.github.io/movies-search/static/css/main.98b3dc32.css",
-    "main.js": "/V914eslav.github.io/movies-search/static/js/main.0588ace6.js",
+    "main.js": "/V914eslav.github.io/movies-search/static/js/main.a577c288.js",
     "index.html": "/V914eslav.github.io/movies-search/index.html",
     "main.98b3dc32.css.map": "/V914eslav.github.io/movies-search/static/css/main.98b3dc32.css.map",
-    "main.0588ace6.js.map": "/V914eslav.github.io/movies-search/static/js/main.0588ace6.js.map"
+    "main.a577c288.js.map": "/V914eslav.github.io/movies-search/static/js/main.a577c288.js.map"
   },
   "entrypoints": [
     "static/css/main.98b3dc32.css",
-    "static/js/main.0588ace6.js"
+    "static/js/main.a577c288.js"
   ]
 }
