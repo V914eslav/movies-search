@@ -2,7 +2,7 @@
   "name": "movies-search",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://V914eslav.github.io/movies-search/",
+  "homepage": "https://v914eslav.github.io/movies-search/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
